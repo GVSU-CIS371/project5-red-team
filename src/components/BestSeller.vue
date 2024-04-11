@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col v-for="product in filteredProducts" :key="product.id" cols="12" sm="6" md="4">
-        <store-item :product="product" :style="{height: '380px', width: '340px'}"></store-item>
+        <store-item :product="product" ></store-item>
       </v-col>
     </v-row>
   </v-container>
@@ -14,6 +14,6 @@ import { useProductStore } from '../stores/ProductStore';
 
 const ProdStore = useProductStore();
 ProdStore.init();
-ProdStore.filterByRating(4);
+ProdStore.filterByRating(4.1);
 const filteredProducts = ProdStore.filteredProducts;
 </script>

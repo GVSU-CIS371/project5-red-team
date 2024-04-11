@@ -1,7 +1,9 @@
 
 <template>
   <v-card>
-    <v-card-title>{{ product.data.name }}</v-card-title>
+    <v-card-title>
+      <b>{{ product.data.name }}</b>
+      </v-card-title>
     <v-row>
       <v-col cols="3">
         <v-rating :value="product.data.rating" max="5" readonly dense size="20">
