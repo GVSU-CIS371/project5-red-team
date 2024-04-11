@@ -1,7 +1,19 @@
 <template>
-  <!-- your answer -->
+  <v-container>
+    <v-row>
+      <v-col v-for="product in filteredProducts" :key="product.id" cols="12" sm="6" md="4">
+        <store-item :product="product" :style="{height: '380px', width: '340px'}"></store-item>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts" setup>
-// your answer
+import StoreItem from './StoreItem.vue';
+import { useProductStore } from '../stores/ProductStore';
+
+const ProdStore = useProductStore();
+ProdStore.init();
+ProdStore.filterByCategory("Groceries");
+const filteredProducts = ProdStore.filteredProducts;
 </script>

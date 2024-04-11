@@ -3,21 +3,23 @@ import { ProductDoc } from "../types/product";
 import { initProducts } from "../data-init";
 
 export const useProductStore = defineStore("ProductStore", {
-  
-  state: () => ({products: <ProductDoc[]>[]}),
-  getters:{
-
+  state: () => ({ products: <ProductDoc[]>[] }),
+  getters: {
+    filteredProducts(state) {
+      return state.products;
+    },
   },
-  actions:{
-    init(){
+  actions: {
+    init() {
       this.products = initProducts;
     },
-     filterByCategory(category: String){
-      this.products.filter(x => x.data.category == category);
+    filterByCategory(category: string) {
+      this.products = this.products.filter((x) => x.data.category === category);
+      return this.products; // Return the filtered array
     },
-    filterByRating(minRating: number){
-      this.products.filter(x => x.data.rating >= minRating)
-    }
-  }
-
+    filterByRating(minRating: number) {
+      this.products = this.products.filter((x) => x.data.rating >= minRating);
+      return this.products; // Return the filtered array
+    },
+  },
 });
